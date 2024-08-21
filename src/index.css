@@ -7,4 +7,6 @@
 }
 *{
   border:0;
+  user-select: none;
+  
 }
