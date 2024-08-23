@@ -7,7 +7,6 @@ const [Score,setScore]=useState(0);
 const [questionNo,setQuestionNumber]=useState(0);
 const [answerChoosed,setAnswerChoosed]=useState({});
 const [isSubmitted,setIsSubmitted]=useState(false);
-const [isInputEmpty,setIsInputEmpty]=useState(true);
 
 
 const handleAnswersChange=(el,i)=>{
@@ -15,11 +14,10 @@ const handleAnswersChange=(el,i)=>{
   setAnswerChoosed(isAnswerChoosed);
   const newUserAnswer=c=>({...c,[i]:el})
   setUserAnswer(newUserAnswer);
-
 }
 
 const checkAnswers=()=>{
-setIsInputEmpty(QuizData.some((_,index)=>userAnswer[index]===undefined));
+  const isInputEmpty=QuizData.some((_,index)=>userAnswer[index]===undefined);
   if(!isInputEmpty){
     setIsSubmitted(true);
     QuizData.map((element,index)=>{
@@ -62,7 +60,7 @@ return(
       )}
         <div key={"button_"+index} className="flex gap-x-28">
         <button type="button" onClick={PreviousQuestion} className=" bg-blue-500 px-4 py-2 rounded-md font-mono font-bold mt-3 text-white text-lg hover:bg-blue-600 transition-colors" disabled={questionNo===0}>Prev</button>
-        {index!==QuizData.length-1?<button id="next" onClick={NextQuestion} className=" bg-blue-500 px-4 py-2 rounded-md text-white text-lg font-mono font-bold mt-3 hover:bg-blue-600 transition-colors" type="button" disabled={!answerChoosed[index]}>Next</button>:<button  className="bg-blue-500 px-4 py-2 rounded-md font-mono font-bold mt-3 text-white text-lg hover:bg-blue-600 transition-colors" type="button"  onClick={()=>checkAnswers()}>Submit</button>}
+        {index!==QuizData.length-1?<button id="next" onClick={NextQuestion} className=" bg-blue-500 px-4 py-2 rounded-md text-white text-lg font-mono font-bold mt-3 hover:bg-blue-600 transition-colors" type="button" disabled={!answerChoosed[index]}>Next</button>:<button  className="bg-blue-500 px-4 py-2 rounded-md font-mono font-bold mt-3 text-white text-lg hover:bg-blue-600 transition-colors" type="button"  onClick={checkAnswers}>Submit</button>}
         </div>
         </div>
         </div>
