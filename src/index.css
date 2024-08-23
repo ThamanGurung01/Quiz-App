@@ -1,11 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.ApplyWidth{
-  width: 36rem;
-}
-*{
-  border:0;
-  user-select: none;
-}
