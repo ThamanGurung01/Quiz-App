@@ -58,7 +58,7 @@ return(
         <p key={"p_"+index} className="font-bold text-xl mb-6 text-gray-800">{(index+1) + ". " + element.Question}</p>
         {element.Choice.map((el,i)=> <div key={index+"_inputs_"+i} className="mb-4 flex items-center"><input className="mr-3 accent-blue-500" id={index+"_"+i} type="radio" name={"input_"+index} onChange={(e)=> handleAnswersChange(el,index)} checked={userAnswer[index]===el}/><label className="text-lg text-gray-700" htmlFor={index+"_"+i}>{el}</label></div>////
       )}
-        <div key={"button_"+index} className="flex gap-x-28">
+        <div key={"button_"+index} className="flex justify-between">
         <button type="button" onClick={PreviousQuestion} className=" bg-blue-500 px-4 py-2 rounded-md font-mono font-bold mt-3 text-white text-lg hover:bg-blue-600 transition-colors" disabled={questionNo===0}>Prev</button>
         {index!==QuizData.length-1?<button id="next" onClick={NextQuestion} className=" bg-blue-500 px-4 py-2 rounded-md text-white text-lg font-mono font-bold mt-3 hover:bg-blue-600 transition-colors" type="button" disabled={!answerChoosed[index]}>Next</button>:<button  className="bg-blue-500 px-4 py-2 rounded-md font-mono font-bold mt-3 text-white text-lg hover:bg-blue-600 transition-colors" type="button"  onClick={checkAnswers}>Submit</button>}
         </div>
